@@ -4,70 +4,40 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: release notes, connectors, mllp, transport
 
-*Release Notes:* xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[MLLP Release Notes]
+_Premium_
 
 The Mule HL7 MLLP transport provides connectivity and parsing functionality for HL7 MLLP messages.
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations, and API version updates with each release of the connector using the xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[HL7 MLLP Connector Release Notes].
-
-MuleSoft maintains this connector under the xref:3.8@mule-runtime::anypoint-connectors.adoc#connector-categories[_Premium_] support policy.
-
-
 == Prerequisites
 
-This document assumes that you are familiar with Mule,
-xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors], and
-xref:6@studio::index.adoc[Anypoint Studio]. To increase your familiarity with Studio, consider completing the
-xref:6@studio::basic-studio-tutorial.adoc[Basic Studio Tutorial]. This page requires some basic knowledge of
-xref:3.8@mule-runtime::mule-concepts.adoc[Key Concepts],
-xref:3.8@mule-runtime::elements-in-a-mule-flow.adoc[Elements in a Mule Flow], and
-xref:3.8@mule-runtime::global-elements.adoc[Global Elements].
-
-
-=== Hardware and Software Requirements
-
-For hardware and software requirements, see the xref:3.8@mule-runtime::hardware-and-software-requirements.adoc[Hardware and Software Requirements] page.
-
+This document assumes that you are familiar with HL7, Mule, Anypoint Connectors,
+Anypoint Studio essentials, elements in a Mule flow, and global elements.
 
 === Compatibility
-
 
 [%header%autowidth.spread]
 |===
 |Software |Version
-|*Mule Runtime* |3.7 and later
-|*Java* |7
+|Mule Runtime |3.7 and later
+|Java |7
 |===
 
-== Installing HL7 MLLP Connector
+== To Install this Connector
 
-To install:
+. In Anypoint Studio, click the Exchange icon in the Studio taskbar.
+. Click Login in Anypoint Exchange.
+. Search for the connector and click Install.
+. Follow the prompts to install the connector.
 
-. In https://www.mulesoft.com/platform/studio[Anypoint Studio], click *Help* > *Install New Software*.
-. In the *Work With* field of the *Install* wizard, use the drop-down menu to click: `Anypoint Connectors Update Site`.
-. Expand *Premium* and check *Mule MLLP Transport*. Click *Next*.
-. Click *Next* to confirm the installation details.
-. Click *I accept the terms of the license agreement*, then click *Finish*.
-. After installation finishes, the installer asks you to restart Studio. Click *Yes* to restart. After Studio restarts, type `MLLP' in the palette search to quickly find the HL7 MLLP building block.
-
-=== Upgrading from an Older Version
-
-If you’re currently using an older version of the connector, a small popup appears in the bottom right corner of Anypoint Studio with an "Updates Available" message.
-
-. Click the popup and check for available updates.
-. Click the Connector version checkbox and click *Next* and follow the instructions provided by the user interface.
-. *Restart* Studio when prompted.
-. After restarting, when creating a flow and using the connector, if you have several versions of the connector installed, you may be asked which version you would like to use. Choose the version you would like to use.
-
-Additionally, we recommend that you keep Studio up to date with its latest version.
+When Studio has an update, a message displays in the lower right corner, which you can click to install the update.
 
 == Configuring the Connector Global Element
 
 Follow the steps below to create an HL7 MLLP global element:
 
-. Click the *Global Elements* tab at the base of the canvas.
-. On the Global Mule Configuration Elements screen, click *Create*.
-. In the *Choose Global Type wizard*, expand *Connector Endpoints*, and then select *HL7 MLLP: Configuration*.
+. Click the Global Elements tab at the base of the canvas.
+. On the Global Mule Configuration Elements screen, click Create.
+. In the Choose Global Type wizard, expand Connector Endpoints, and then select HL7 MLLP: Configuration.
 
 The HL7 MLLP endpoint creates a channel to receive or send messages over HL7 MLLP and allows Mule applications to send and receive messages on specified ports.
 
@@ -75,55 +45,55 @@ A HL7 MLLP endpoint placed at the beginning of a flow is automatically configure
 
 The HL7 MLLP endpoint configuration is explained in this section.
 
-* *General tab*
+* General tab
 +
 image::mllp-general.png[HL7 MLLP General Tab]
 +
 [%header%autowidth.spread]
 |===
 |Element |Description
-|*Display Name* |Name of the building block as it appears in the flow.
-|*Host* |Name of the host to which the endpoint must connect.
-|*Port* |Port number for the connection.
+|Display Name |Name of the building block as it appears in the flow.
+|Host |Name of the host to which the endpoint must connect.
+|Port |Port number for the connection.
 |===
 
-* *Advanced tab*
+* Advanced tab
 +
 image::mllp-advanced.png[HL7 MLLP Advanced Tab]
 +
 [%header%autowidth.spread]
 |===
 |Element |Description
-|*Address* | The complete URI location of the host to which the Endpoint must connect. This parameter is mutually exclusive of the other following parameters:
+|Address | The complete URI location of the host to which the Endpoint must connect. This parameter is mutually exclusive of the other following parameters:
 
 * Host
 * Port
 * Endpoint Reference.
-|*Response Timeout* |The timeout for a response, in milliseconds.
-|*Exchange Patterns* |Select between two possible exchange patterns.
+|Response Timeout |The timeout for a response, in milliseconds.
+|Exchange Patterns |Select between two possible exchange patterns.
 
-* *one-way:* An inbound endpoint only receives data and does not send anything back to the originating application. An outbound endpoint only sends data.
-* *request-response:* Allows two-way communication between the endpoint and the external application
+* one-way: An inbound endpoint only receives data and does not send anything back to the originating application. An outbound endpoint only sends data.
+* request-response: Allows two-way communication between the endpoint and the external application
 
 |===
 
 
-* *References tab*
+* References tab
 +
 image::mllp-references.png[HL7 MLLP References Tab]
 +
 [%header%autowidth.spread]
 |===
 |Element |Description
-|*Connector Reference* | References an HL7 MLLP connector configured as a global element.
-|*Endpoint Reference* | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
+|Connector Reference | References an HL7 MLLP connector configured as a global element.
+|Endpoint Reference | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
 
 * Host (General tab)
 * Port (General tab)
 * Address (Advanced tab).
-|*Global Transformers (Request section)* | Add transformers that the endpoint applies to information it receives. Use the "Add" icon next to the Global Transformers field to select transformers to add.
-|*Global Transformers (Response section)* | Add transformers that the endpoint applies to information it receives. Use the "Add" icon next to the Global Transformers field to select transformers to add.
-|*Transformers to be applied (Request and Response sections)* | Use the "Edit" icons to edit, re-order or remove selected transformers.
+|Global Transformers (Request section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
+|Global Transformers (Response section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
+|Transformers to be applied (Request and Response sections) | Use the Edit icons to edit, reorder or remove selected transformers.
 |===
 
 == Using the Connector
@@ -132,13 +102,13 @@ HL7 MLLP transport supports send and receive HL7 MLLP messages.
 
 === HL7 MLLP Namespace and Schema
 
-When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
+When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector namespace and schema location.
 
-* *Namespace:* `+http://www.mulesoft.org/schema/mule/connector+`
-* *Schema Location:* `+http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd+`
+* Namespace: `+http://www.mulesoft.org/schema/mule/connector+`
+* Schema Location: `+http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd+`
 
 [TIP]
-If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
+If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your Configuration XML, inside the `<mule>` tag.
 
 [source,xml,linenums]
 ----
@@ -178,7 +148,7 @@ image::mllp-use-case.png[]
 
 ==== Send-Receive HL7 MLLP Message
 
-. Drag a *HTTP connector* onto the canvas and configure the following parameters:
+. Drag a HTTP connector onto the canvas and configure the following parameters:
 +
 [%header%autowidth.spread]
 |===
@@ -187,8 +157,8 @@ image::mllp-use-case.png[]
 |Path|/send
 |===
 +
-. Drag a *HL7 MLLP* component next to the HTTP endpoint.
-. Configure HL7 MLLP with the following values in *General* tab:
+. Drag a HL7 MLLP component next to the HTTP endpoint.
+. Configure HL7 MLLP with the following values in General tab:
 +
 [%header%autowidth.spread]
 |===
@@ -197,7 +167,7 @@ image::mllp-use-case.png[]
 |Port| 5004
 |===
 +
-. Drag a *Set Payload* component before HL7 MLLP transport and set a HL7 message:
+. Drag a Set Payload component before HL7 MLLP transport and set a HL7 message:
 +
 [source,xml]
 ----
@@ -205,7 +175,7 @@ image::mllp-use-case.png[]
 ----
 +
 . Create another flow, and set HL7 MLLP as inbound-endpoint.
-. Configure HL7 MLLP with the following values in *General* tab:
+. Configure HL7 MLLP with the following values in General tab:
 +
 [%header%autowidth.spread]
 |===
@@ -214,7 +184,7 @@ image::mllp-use-case.png[]
 |Port| 5004
 |===
 +
-. *Deploy* the application, open a web browser and make a request to the URL *http://localhost:8081/send*.
+. Deploy the application, open a web browser and make a request to the URL `+http://localhost:8081/send+`.
 . You should receive the message as response:
 +
 [source,text,linenums]
@@ -268,4 +238,5 @@ http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
 
 == Resources
 
+* xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[MLLP Release Notes]
 * Access the xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[HL7 MLLP Connector Release Notes].

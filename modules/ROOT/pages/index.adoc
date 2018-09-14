@@ -5,18 +5,18 @@ endif::[]
 :keywords: hl7, healthcare, toolkit, hapi, mllp, er7
 :license-info: Enterprise, CloudHub
 
-The *Mule Healthcare Toolkit* is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
+The Mule Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
-This document assumes a working knowledge of Mule Runtime and Anypoint Studio. To find out more about these applications, consult the xref:3.9@mule-runtime::index.adoc[Mule User Guide] and xref:6@studio::index.adoc[Anypoint Studio documentation].
+This document assumes a working knowledge of Mule Runtime and Anypoint Studio.
 
 == Overview
 
-http://www.hl7.org[Health Level Seven International] is a standards development organization that defines a set of standards for the transport and communication of healthcare information.
+Health Level Seven International is a standards development organization that defines a set of standards for the transport and communication of healthcare information.
 
-NOTE: The version of the MuleSoft HL7 connector is different from the HL7 version numbering. The HL7 connector only supports HL7 software versions *v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8,* and *2.8.1*.
+The version of the MuleSoft HL7 connector is different from the HL7 version numbering. The HL7 connector supports HL7 software versions v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8, and 2.8.1.
 
 
-The Mule Healthcare toolkit allows you to send and receive HL7 messages over MLLP and other transport protocols and corresponding connectors supported by Mule, such as xref:3.8@mule-runtime::http-connector.adoc[HTTP]. Minimal Lower Layer Protocol (MLLP) uses the xref:mllp-connector.adoc[HL7 MLLP connector].
+The Mule Healthcare toolkit allows you to send and receive HL7 messages in ER7 format over MLLP and other transport protocols and corresponding connectors supported by Mule, such as HTTP. Minimal Lower Layer Protocol (MLLP) uses the HL7 MLLP connector.
 
 This page describes the functionality included in the MuleSoft Healthcare toolkit, and provides installation instructions.
 
@@ -28,6 +28,7 @@ The Mule Healthcare Toolkit includes the following elements.
 |===
 |Type |Description
 |Connector |xref:hl7-edi.adoc[HL7 EDI] - Electronic Data Interchange (EDI) schemas, configuration, and operations.
+|API Documentation |https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
 |Connector |xref:mllp-connector.adoc[HL7 MLLP Reference] - Minimal Lower Layer Protocol (MLLP)
 |Testing |xref:connector-testpanel.adoc[Connector Testing with TestPanel]
 |Release Notes |xref:release-notes::connector/hl7-connector-release-notes.adoc[HL7 EDI Connector Release Notes], xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[HL7 MLLP Connector Release Notes]
@@ -38,34 +39,17 @@ The Mule Healthcare Toolkit includes the following elements.
 
 The Mule Healthcare Toolkit is available for free on a trial basis. Contact mailto:info@mulesoft.com[MuleSoft Sales Inquiries] to request a license to use the Healthcare Toolkit components in a production environment.
 
-To install:
+. In Anypoint Studio, click the Exchange icon in the Studio taskbar.
+. Click Login in Anypoint Exchange.
+. Search for HL7 and click Install.
+. Follow the prompts to install the connector.
+. Repeat steps 3 and 4 to install the HL7 MLLP Connector too.
 
-. In https://www.mulesoft.com/platform/studio[Anypoint Studio], click *Help* > *Install New Software*.
-. In the *Work With* field of the *Install* wizard, use the drop-down menu to click: `Anypoint Connectors Update Site`.
-+
-[NOTE]
-====
-*Are you behind a firewall?*
-
-If you are on a network with firewall restrictions, you may find that the Studio update sites are blocked and you are unable to download extensions.
-
-Allow the following sites on your firewall to allow Studio to connect to the update sites:
-
-* `+http://studio.mulesoft.org/+`
-* `+http://repository.mulesoft.org/connectors/releases/+`
-* `+http://download.eclipse.org/technology/m2e/releases+`
-* `+http://download.eclipse.org/eclipse/updates+`
-* `+http://subclipse.tigris.org/+`
-* `+http://findbugs.cs.umd.edu/eclipse/+`
-====
-+
-. Expand *Premium* and check *HL7 EDI Connector*. Click *Next*.
-. Click *Next* to confirm the installation details.
-. Click *I accept the terms of the license agreement*, then click *Finish*.
-. After installation finishes, the installer asks you to restart Studio. Click *Yes* to restart. After Studio restarts, type `hl7` in the palette search to quickly find the HL7 EDI building block.
-. If you want to use the MLLP Transport, please expand *Premium* and check *Mule MLLP Transport*
 
 == See Also
 
+* https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
+* http://www.hl7.org[Health Level Seven International]
 * Use the xref:connector-testpanel.adoc[Connector Testing with TestPanel] to test your HL7 connector application.
 * xref:mllp-connector.adoc[HL7 MLLP Reference]
+* mailto:info@mulesoft.com[MuleSoft Sales Inquiries]
