@@ -7,28 +7,16 @@ endif::[]
 
 The *Mule Healthcare Toolkit* is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
-[NOTE]
-This document assumes a working knowledge of Mule Runtime and Anypoint Studio. To find out more about these applications, consult the xref:3.8@mule-runtime::index.adoc[Mule User Guide].
-
+This document assumes a working knowledge of Mule Runtime and Anypoint Studio. To find out more about these applications, consult the xref:3.9@mule-runtime::index.adoc[Mule User Guide] and xref:6@studio::index.adoc[Anypoint Studio documentation].
 
 == Overview
 
-http://www.hl7.org[Health Level Seven International] is a standards development organization that has defined a set of standards for the transport and communication of healthcare information.
+http://www.hl7.org[Health Level Seven International] is a standards development organization that defines a set of standards for the transport and communication of healthcare information.
 
-The connector currently supports the following versions of HL7: *v2.1*, *v2.2*, *v2.3.1*, *v2.3*, *v2.4, v2.5.1, v2.5, v2.6.* Versions 2.7, 2.8, and 3.0 are not supported.
+NOTE: The version of the MuleSoft HL7 connector is different from the HL7 version numbering. The HL7 connector only supports HL7 software versions *v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8,* and *2.8.1*.
 
-The Mule Healthcare toolkit supports, and allows transformation between, the following message types:
 
-* HL7 ER7: A human-readable format based on line segments and pipe delimiters
-* HL7 XML: An XML representation of HL7 ER7 messages
-* HAPI Message Objects: The native message format of the http://hl7api.sourceforge.net/[HAPI] (HL7 Application Programming Interface) message parser. HAPI is an open source object-oriented parser that works with HL7 XML (version 2.X) and ER7 formats.
-
-The Mule Healthcare toolkit allows you to send and receive HL7 messages over MLLP (using the xref:hl7-endpoint-reference.adoc[HL7 connector]) and other transport protocols (and corresponding connectors) supported by Mule, such as xref:3.8@mule-runtime::http-connector.adoc[HTTP].
-
-Other features:
-
-* xref:hl7-message-validation.adoc[HL7 Message Validation], which you can apply at a global connector level or for specific message processors only
-* xref:hl7-mule-expression-language-support.adoc[HL7 Mule Expression Language Support] allows you to access and modify the contents of an HL7 message using the xref:3.8@mule-runtime::mule-expression-language-mel.adoc[Mule Expression Language MEL]
+The Mule Healthcare toolkit allows you to send and receive HL7 messages over MLLP and other transport protocols and corresponding connectors supported by Mule, such as xref:3.8@mule-runtime::http-connector.adoc[HTTP]. Minimal Lower Layer Protocol (MLLP) uses the xref:mllp-connector.adoc[HL7 MLLP connector].
 
 This page describes the functionality included in the MuleSoft Healthcare toolkit, and provides installation instructions.
 
@@ -36,79 +24,28 @@ This page describes the functionality included in the MuleSoft Healthcare toolki
 
 The Mule Healthcare Toolkit includes the following elements.
 
-[%header%autowidth.spread]
+[%header,cols="20s,80a"]
 |===
-|Type
-|Tool
-|Input
-|Output
-|Use
-
-|Connector
-|xref:hl7-global-connector.adoc[HL7 Global Connector]
-|N/A
-|N/A
-|Use to configure a xref:3.8@mule-runtime::global-elements.adoc[global element] that connectors in Mule can reference.
-
-|Connector
-|xref:hl7-endpoint-reference.adoc[HL7 Connector Reference]
-|N/A
-|N/A
-|Use to receive or send HL7 messages over MLLP.
-
-|Components
-|xref:hl7-message-component.adoc[HL7 Message Component]
-|N/A
-|HL7 ER7
-|Use to generate an ER7-encoded HL7 message with user-defined parameters. Please note that this component does not generate the HL7 _payload_ of a message, only the message structure. Use the xref:hl7-append-segment-component-reference.adoc[Append Segment Component] to add the payload.
-
-||xref:hl7-ack-component-reference.adoc[HL7 ACK Component Reference]
-|HL7 ER7
-|HL7 ER7
-|Use to return ACK (general acknowledge) messages to confirm message receipt and validation, and NACK (negative general acknowledge) in case of message errors.
-
-||xref:hl7-append-segment-component-reference.adoc[HL7 Append Segment Component Reference]
-|HAPI Message Object
-|HAPI Message Object
-|Use in conjunction with the xref:hl7-message-component.adoc[HL7 Message Component] to add content to an HL7 message.
-
-||xref:hl7-delete-segment-component-reference.adoc[HL7 Delete Segment Component Reference]
-|HAPI Message Object
-|HAPI Message Object
-|Use to delete content from an HL7 message.
-
-|Transformer
-|xref:hl7-encoding-transformer.adoc[HL7 Encoding Transformer]
-|HAPI Message Object, HL7 XML, or HL7 ER7
-|HAPI Message Object, HL7 XML, or HL7 ER7
-|Transforms an HL7 message to and from the ER7, XML and HAPI message object formats.
-
-|Filter
-|xref:hl7-profile-validator-filter.adoc[HL7 Profile Validator Filter]
-|N/A
-|N/A
-|Use to conform a message to http://wiki.hl7.org/index.php?title=Conformance_Profile[message profiles], which define constraints that go beyond the standard HL7 specifications.
-
-|Exception Strategy
-|xref:hl7-exception-strategy.adoc[HL7 Exception Strategy]
-|N/A
-|N/A
-|Sets a flow's xref:3.8@mule-runtime::error-handling.adoc[exception strategy] to HL7, instead of the xref:3.8@mule-runtime::error-handling.adoc[default], and sends an (N)ACK message to the originating application.
+|Type |Description
+|Connector |xref:hl7-edi.adoc[HL7 EDI] - Electronic Data Interchange (EDI) schemas, configuration, and operations.
+|Connector |xref:mllp-connector.adoc[HL7 MLLP Reference] - Minimal Lower Layer Protocol (MLLP)
+|Testing |xref:connector-testpanel.adoc[Connector Testing with TestPanel]
+|Release Notes |xref:release-notes::connector/hl7-connector-release-notes.adoc[HL7 EDI Connector Release Notes], xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[HL7 MLLP Connector Release Notes]
 |===
+
 
 == Installing the Mule Healthcare Toolkit
 
-[NOTE]
-*The Healthcare Toolkit is available for free on a trial basis.* Contact mailto:info@mulesoft.com[MuleSoft Sales Inquiries] to request a license to use the Healthcare Toolkit components in a production environment.
+The Mule Healthcare Toolkit is available for free on a trial basis. Contact mailto:info@mulesoft.com[MuleSoft Sales Inquiries] to request a license to use the Healthcare Toolkit components in a production environment.
 
 To install:
 
-. In Anypoint Studio, click *Help* > *Install New Software*.
+. In https://www.mulesoft.com/platform/studio[Anypoint Studio], click *Help* > *Install New Software*.
 . In the *Work With* field of the *Install* wizard, use the drop-down menu to click: `Anypoint Connectors Update Site`.
 +
 [NOTE]
 ====
-Are you behind a firewall?
+*Are you behind a firewall?*
 
 If you are on a network with firewall restrictions, you may find that the Studio update sites are blocked and you are unable to download extensions.
 
@@ -122,14 +59,13 @@ Allow the following sites on your firewall to allow Studio to connect to the upd
 * `+http://findbugs.cs.umd.edu/eclipse/+`
 ====
 +
-. Expand *Premium* and check *Mule HL7 Transport*. Click *Next*.
+. Expand *Premium* and check *HL7 EDI Connector*. Click *Next*.
 . Click *Next* to confirm the installation details.
 . Click *I accept the terms of the license agreement*, then click *Finish*.
-. After installation finishes, the installer asks you to restart Studio. Click *Yes* to restart. After Studio restarts, type `HL7` in the palette search to quickly find HL7 building blocks (see image below).
-+
-image::hl7-palette.png[]
-
+. After installation finishes, the installer asks you to restart Studio. Click *Yes* to restart. After Studio restarts, type `hl7` in the palette search to quickly find the HL7 EDI building block.
+. If you want to use the MLLP Transport, please expand *Premium* and check *Mule MLLP Transport*
 
 == See Also
 
-* Use the xref:testing-with-hapi-testpanel.adoc[HAPI TestPanel] to test your HL7 application.
+* Use the xref:connector-testpanel.adoc[Connector Testing with TestPanel] to test your HL7 connector application.
+* xref:mllp-connector.adoc[HL7 MLLP Reference]
