@@ -1,4 +1,5 @@
 .xref:index.adoc[Healthcare Toolkit]
+* xref:index.adoc[Healthcare Toolkit]
 * xref:hl7-edi.adoc[HL7 EDI]
 * xref:mllp-connector.adoc[HL7 MLLP]
 * xref:connector-testpanel.adoc[Connector Testing with TestPanel]
