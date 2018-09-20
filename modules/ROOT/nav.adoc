@@ -1,4 +1,5 @@
 .xref:index.adoc[Healthcare Toolkit]
+* xref:index.adoc[About Healthcare Toolkit]
 * xref:hl7-ack-component-reference.adoc[HL7 ACK Component Reference]
 * xref:hl7-append-segment-component-reference.adoc[HL7 Append Segment Component Reference]
 * xref:hl7-delete-segment-component-reference.adoc[HL7 Delete Segment Component Reference]
