@@ -37,7 +37,7 @@ The Mule Healthcare Toolkit includes the following elements.
 
 == Installing the Mule Healthcare Toolkit
 
-The Mule Healthcare Toolkit is available for free on a trial basis. Contact mailto:info@mulesoft.com[MuleSoft Sales Inquiries] to request a license to use the Healthcare Toolkit components in a production environment.
+The Mule Healthcare Toolkit is available for free on a trial basis in non-production environments:
 
 . In Anypoint Studio, click the Exchange icon in the Studio taskbar.
 . Click Login in Anypoint Exchange.
@@ -45,6 +45,7 @@ The Mule Healthcare Toolkit is available for free on a trial basis. Contact mail
 . Follow the prompts to install the connector.
 . Repeat steps 3 and 4 to install the HL7 MLLP Connector too.
 
+To request a license to use the Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or xref:https://www.mulesoft.com/contact[the MuleSoft sales team].
 
 == See Also
 
@@ -52,4 +53,3 @@ The Mule Healthcare Toolkit is available for free on a trial basis. Contact mail
 * http://www.hl7.org[Health Level Seven International]
 * Use the xref:connector-testpanel.adoc[Connector Testing with TestPanel] to test your HL7 connector application.
 * xref:mllp-connector.adoc[HL7 MLLP Reference]
-* mailto:info@mulesoft.com[MuleSoft Sales Inquiries]
