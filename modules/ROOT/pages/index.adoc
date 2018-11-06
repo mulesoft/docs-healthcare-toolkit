@@ -45,7 +45,7 @@ The Mule Healthcare Toolkit is available for free on a trial basis in non-produc
 . Follow the prompts to install the connector.
 . Repeat steps 3 and 4 to install the HL7 MLLP Connector too.
 
-To request a license to use the Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or xref:https://www.mulesoft.com/contact[the MuleSoft sales team].
+To request a license to use the Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or https://www.mulesoft.com/contact[the MuleSoft sales team].
 
 == See Also
 
