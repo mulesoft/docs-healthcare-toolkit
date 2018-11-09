@@ -5,7 +5,7 @@ endif::[]
 :keywords: hl7, healthcare, toolkit, hapi, mllp, er7
 :license-info: Enterprise, CloudHub
 
-The Mule Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
+Mule Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
 This document assumes a working knowledge of Mule Runtime and Anypoint Studio.
 
@@ -15,14 +15,13 @@ Health Level Seven International is a standards development organization that de
 
 The version of the MuleSoft HL7 connector is different from the HL7 version numbering. The HL7 connector supports HL7 software versions v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8, and 2.8.1.
 
+Mule Healthcare Toolkit allows you to send and receive HL7 messages in ER7 format over MLLP and other transport protocols and corresponding connectors supported by Mule, such as HTTP. Minimal Lower Layer Protocol (MLLP) uses the HL7 MLLP connector.
 
-The Mule Healthcare toolkit allows you to send and receive HL7 messages in ER7 format over MLLP and other transport protocols and corresponding connectors supported by Mule, such as HTTP. Minimal Lower Layer Protocol (MLLP) uses the HL7 MLLP connector.
-
-This page describes the functionality included in the MuleSoft Healthcare toolkit, and provides installation instructions.
+This page describes the functionality included in Mule Healthcare Toolkit, and provides installation instructions.
 
 == Toolkit Contents
 
-The Mule Healthcare Toolkit includes the following elements.
+Mule Healthcare Toolkit includes the following elements.
 
 [%header,cols="20s,80a"]
 |===
@@ -35,16 +34,18 @@ The Mule Healthcare Toolkit includes the following elements.
 |===
 
 
-== Installing the Mule Healthcare Toolkit
+== Installing the Mule 4 Healthcare Toolkit
 
-The Mule Healthcare Toolkit is available for free on a trial basis. Contact mailto:info@mulesoft.com[MuleSoft Sales Inquiries] to request a license to use the Healthcare Toolkit components in a production environment.
+Mule Healthcare Toolkit is available for free on a trial basis in non-production environments:
 
-. In Anypoint Studio, click the Exchange icon in the Studio taskbar.
-. Click Login in Anypoint Exchange.
-. Search for HL7 and click Install.
-. Follow the prompts to install the connector.
-. Repeat steps 3 and 4 to install the HL7 MLLP Connector too.
+. In Anypoint Studio, click **Search in Exchange** in Mule Palette.
+. Log into Exchange if you aren't already.
+. Search for HL7.
+. Select **HL7 Connector - Mule 4** (HL7 EDI) and **HL7 MML - Mule 4**.
+. Add both connectors to the Selected modules pane.
+. Select **Finish** to make the connectors available in Mule Palette.
 
+To request a license to use the Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or https://www.mulesoft.com/contact[the MuleSoft sales team].
 
 == See Also
 
@@ -52,4 +53,3 @@ The Mule Healthcare Toolkit is available for free on a trial basis. Contact mail
 * http://www.hl7.org[Health Level Seven International]
 * Use the xref:connector-testpanel.adoc[Connector Testing with TestPanel] to test your HL7 connector application.
 * xref:mllp-connector.adoc[HL7 MLLP Reference]
-* mailto:info@mulesoft.com[MuleSoft Sales Inquiries]
