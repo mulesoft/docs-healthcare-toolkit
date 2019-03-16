@@ -92,3 +92,10 @@ image::messages.png[]
 . Check the *Activity* log for the HL7 response from Mule. The image below displays the HL7 ACK messages sent by Mule.
 +
 image::incoming-ack.png[]
+
+== See Also
+
+* http://hl7api.sourceforge.net/license.html[MPL/GPL licenses]
+* xref:hl7-edi.adoc[HL7 EDI guide]
+* xref:mllp-connector.adoc[HL7 inbound endpoint]
+* https://docs.mulesoft.com/downloads/healthcare-toolkit/3.1/hl7-edi-demo-app.zip[HL7 EDI MLLP Demo Application (zip file)]
