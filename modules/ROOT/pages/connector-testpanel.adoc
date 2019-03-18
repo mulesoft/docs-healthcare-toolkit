@@ -2,9 +2,10 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: hl7, testpanel
 
-TestPanel is an HL7 receiver, transmitter, and message editor. TestPanel is free software distributed under the http://hl7api.sourceforge.net/license.html[MPL/GPL] licenses, and runs on Mac OSX, Linux, and Windows.
+https://hapifhir.github.io/hapi-hl7v2/hapi-testpanel/[HAPI TestPanel] is an HL7 receiver, transmitter, and message editor. TestPanel is free software distributed under the http://hl7api.sourceforge.net/license.html[MPL/GPL] licenses, and runs on Mac OSX, Linux, and Windows. 
+
+Before using this document, download, install, and start TestPanel using the https://hapifhir.github.io/hapi-hl7v2/hapi-testpanel/install.html[HAPI TestPanel site]. Thereafter, you can use the information in this document to send HL7 messages to the TestPanel and receive messages from the software.
 
 Because the TestPanel can transmit HL7 messages to a listening application through MLLP or HTTP, you can use it to test your Mule flows that handle HL7. The following section provides an example of a simple flow tested with the TestPanel.
 
@@ -14,9 +15,9 @@ Because the TestPanel can transmit HL7 messages to a listening application throu
 
 In this example, you can:
 
-* Build a simple Studio application to process the HL7 messages, then send responses
-* Configure the TestPanel application to send and receive HL7 messages on specific ports
-* Test that the setup works as intended
+* Build a simple Studio application to process the HL7 messages, then send responses.
+* Configure the TestPanel application to send and receive HL7 messages on specific ports.
+* Test that the setup works as intended.
 
 == Configuration and Illustration
 
@@ -48,7 +49,7 @@ This example application performs the following actions:
 
 image::sampleflow.png[]
 
-The first building block is an xref:mllp-connector.adoc[HL7 inbound endpoint], configured with the following parameters:
+The first building block is an xref:mllp-connector.adoc[HL7 inbound endpoint] configured with the following parameters:
 
 * *Host*: `localhost`
 * *Port*: `50609`
@@ -60,7 +61,6 @@ In the *Process the HL7 Message* scope, xref:hl7-edi.adoc[HL7 EDI] reads and val
 
 image::testpanel-obj-builder.png[]
 
-
 In the *Send a HL7 ACK* scope, HL7 MLLP sends the ACK message to the originating application.
 
 === TestPanel Configuration
@@ -69,10 +69,10 @@ This section explains how to set up TestPanel to work with this example.
 
 TestPanel configuration involves the following tasks:
 
-* Configuring the TestPanel to send a sample HL7 message to localhost port 50609
-* Starting the listening port
-* Sending a sample HL7 message
-* Checking the Activity log for the ACK reply from Mule
+* Configure the TestPanel to send a sample HL7 message to localhost port 50609.
+* Start the listening port.
+* Send a sample HL7 message.
+* Check the activity log for the ACK reply from Mule.
 
 To configure the TestPanel:
 
@@ -92,3 +92,10 @@ image::messages.png[]
 . Check the *Activity* log for the HL7 response from Mule. The image below displays the HL7 ACK messages sent by Mule.
 +
 image::incoming-ack.png[]
+
+== See Also
+
+* http://hl7api.sourceforge.net/license.html[MPL/GPL licenses]
+* xref:hl7-edi.adoc[HL7 EDI guide]
+* xref:mllp-connector.adoc[HL7 inbound endpoint]
+* https://docs.mulesoft.com/downloads/healthcare-toolkit/3.1/hl7-edi-demo-app.zip[HL7 EDI MLLP Demo Application (zip file)]
