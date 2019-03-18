@@ -9,7 +9,7 @@ Before using this document, download, install, and start TestPanel using the htt
 
 Because the TestPanel can transmit HL7 messages to a listening application through MLLP or HTTP, you can use it to test your Mule flows that handle HL7. The following section provides an example of a simple flow tested with the TestPanel.
 
-*Sample Application:* https://docs.mulesoft.com/downloads/healthcare-toolkit/3.0/hl7-edi-demo-app.zip[HL7 EDI MLLP Demo Application (zip file)]
+Sample Application: https://docs.mulesoft.com/downloads/healthcare-toolkit/3.0/hl7-edi-demo-app.zip[HL7 EDI MLLP Demo Application (zip file)]
 
 == Simple Example
 
