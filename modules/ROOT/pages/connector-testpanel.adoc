@@ -80,7 +80,7 @@ To configure the TestPanel:
 +
 image::outconf.png[]
 +
-. At the *Outgoing Message Sender *pane, configure the following settings (highlighted above):
+. At the *Outgoing Message Sender* pane, configure the following settings (highlighted above):
 ** *Host*: `localhost`
 ** *Port*: `50609`
 . Click  *Start*  near the top of the *Incoming Message Receiver* pane. The TestPanel  starts listening for HL7 messages on the configured host and port.
