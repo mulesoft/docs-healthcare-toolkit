@@ -43,7 +43,7 @@ image::testflow-diag.png[testflow_diag]
 This example application performs the following actions:
 
 * Listens for incoming HL7 messages.
-* After it receives a message through HL7 MLLP, HL7 EDI reads/validates a message and generates an HL7 ACK message.
+* After it receives a message through HL7 MLLP, HL7 EDI reads and validates a message and generates an HL7 ACK message.
 * HL7 EDI writes the ACK message in HL7 ER7 format, and HL7 MLLP sends it back to the sending application.
 * File Connector stores the ACK message on a file.
 
