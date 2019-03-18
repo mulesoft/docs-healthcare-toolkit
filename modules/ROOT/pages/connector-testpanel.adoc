@@ -2,20 +2,22 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: hl7, testpanel
 
-TestPanel is an HL7 receiver, transmitter, and message editor. TestPanel is free software distributed under the MPL/GPL licenses, and runs on Mac OSX, Linux, and Windows.
+https://hapifhir.github.io/hapi-hl7v2/hapi-testpanel/[HAPI TestPanel] is an HL7 receiver, transmitter, and message editor. TestPanel is free software distributed under the http://hl7api.sourceforge.net/license.html[MPL/GPL] licenses, and runs on Mac OSX, Linux, and Windows. 
+
+Before using this document, download, install, and start TestPanel using the https://hapifhir.github.io/hapi-hl7v2/hapi-testpanel/install.html[HAPI TestPanel site]. Thereafter, you can use the information in this document to send HL7 messages to the TestPanel and receive messages from the software.
 
 Because the TestPanel can transmit HL7 messages to a listening application through MLLP or HTTP, you can use it to test your Mule flows that handle HL7. The following section provides an example of a simple flow tested with the TestPanel.
 
+Sample Application: https://docs.mulesoft.com/downloads/healthcare-toolkit/3.0/hl7-edi-demo-app.zip[HL7 EDI MLLP Demo Application (zip file)]
 
 == Simple Example
 
 In this example, you can:
 
-* Build a simple Studio application to process the HL7 messages, then send responses
-* Configure the TestPanel application to send and receive HL7 messages on specific ports
-* Test that the setup works as intended
+* Build a simple Studio application to process the HL7 messages, then send responses.
+* Configure the TestPanel application to send and receive HL7 messages on specific ports.
+* Test that the setup works as intended.
 
 == Configuration and Illustration
 
@@ -41,55 +43,55 @@ image::testflow-diag.png[testflow_diag]
 This example application performs the following actions:
 
 * Listens for incoming HL7 messages.
-* After it receives a message through HL7 MLLP, HL7 EDI reads and validates a message, and generates an HL7 ACK message.
+* After it receives a message through HL7 MLLP, HL7 EDI reads and validates a message and generates an HL7 ACK message.
 * HL7 EDI writes the ACK message in HL7 ER7 format, and HL7 MLLP sends it back to the sending application.
 * File Connector stores the ACK message on a file.
 
-image::sampleflow.png[sample flow]
+image::sampleflow.png[]
 
-The first building block is an HL7 inbound endpoint, configured with the following parameters:
+The first building block is an xref:mllp-connector.adoc[HL7 inbound endpoint] configured with the following parameters:
 
-* Host: `localhost`
-* Port: `50609`
+* *Host*: `localhost`
+* *Port*: `50609`
 
-After the HL7 MLLP inbound endpoint, an All Flow Control sends the HL7 message to two Cache Scopes for parallel processing.
+After the HL7 MLLP inbound endpoint, an xref:3.8@mule-runtime::all-flow-control-reference.adoc[All Flow Control] sends the HL7 message to two xref:3.8@mule-runtime::cache-scope.adoc[Cache Scopes] for parallel processing.
 
-In the Process the HL7 Message scope, HL7 EDI reads and validates the original HL7 message and generates an ACK message.
+In the *Process the HL7 Message* scope, xref:hl7-edi.adoc[HL7 EDI] reads and validates the original HL7 message and generates an ACK message.
 ** In this demo, HL7 EDI is configured to process ADT_A01 in HL7 v2.5.1 (/hl7/v2_5_1/ADT_A01.esl). You can add other versions and messages schemas in the HL7 Message character encoding under the HL7 EDI: Configuration.
 
-image::testpanel-obj-builder.png[test panel object builder]
+image::testpanel-obj-builder.png[]
 
-In the Send a HL7 ACK scope, HL7 MLLP sends the ACK message to the originating application.
+In the *Send a HL7 ACK* scope, HL7 MLLP sends the ACK message to the originating application.
 
-==  TestPanel Configuration
+=== TestPanel Configuration
 
 This section explains how to set up TestPanel to work with this example.
 
 TestPanel configuration involves the following tasks:
 
-* Configuring the TestPanel to send a sample HL7 message to localhost port 50609.
-* Starting the listening port.
-* Sending a sample HL7 message.
-* Checking the Activity log for the ACK reply from Mule.
+* Configure the TestPanel to send a sample HL7 message to localhost port 50609.
+* Start the listening port.
+* Send a sample HL7 message.
+* Check the activity log for the ACK reply from Mule.
 
 To configure the TestPanel:
 
-. In the Sending Connections pane to the right of HAPI TestPanel's main window, click the displayed `localhost` connection (see the mouse cursor in the image below).
+. In the *Sending Connections* pane to the right of HAPI TestPanel's main window, click the displayed `localhost` connection (see the mouse cursor in the image below).
 +
-image::outconf.png[Outgoing Message Sender pane]
+image::outconf.png[]
 +
-. At the Outgoing Message Sender pane, configure the following settings (highlighted above):
-** Host: `localhost`
-** Port: `50609`
-. Click  Start  near the top of the Incoming Message Receiver pane. The TestPanel  starts listening for HL7 messages on the configured host and port.
-. Click the Messages pane to the right of the application window. The application displays a predefined sample HL7 message (see image below).
+. At the *Outgoing Message Sender* pane, configure the following settings (highlighted above):
+** *Host*: `localhost`
+** *Port*: `50609`
+. Click  *Start*  near the top of the *Incoming Message Receiver* pane. The TestPanel  starts listening for HL7 messages on the configured host and port.
+. Click the *Messages* pane to the right of the application window. The application displays a predefined sample HL7 message (see image below).
 +
-image::messages.png[Messages pane]
+image::messages.png[]
 +
-. Click the Send button near the top of the pane. The application sends the sample message once to the specified host and port. Mule receives the HL7 message, then returns an ACK message to the TestPanel.
-. Check the Activity log for the HL7 response from Mule. The image below displays the HL7 ACK messages sent by Mule.
+. Click the *Send* button near the top of the pane. The application sends the sample message once to the specified host and port. Mule receives the HL7 message, then returns an ACK message to the TestPanel.
+. Check the *Activity* log for the HL7 response from Mule. The image below displays the HL7 ACK messages sent by Mule.
 +
-image::incoming-ack.png[HL7 ACK messages sent by Mule]
+image::incoming-ack.png[]
 
 == See Also
 
