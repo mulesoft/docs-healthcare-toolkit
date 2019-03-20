@@ -21,16 +21,16 @@ To use the HL7 EDI connector in a production environment, you must have purchase
 
 == Using the HL7 EDI Connector
 
-. Install this Connector
+. Install the HL7 EDI Connector.
 . Create Schemas to describe messages for your implementation.
 . Configure HL7 EDI for your trading partner according to your implementation convention.
-. Use HL7 EDI Inside Mule Flows
+. Use HL7 EDI inside Mule flows.
 
 == To Install this Connector
 
 . In Anypoint Studio, click the Exchange icon in the Studio taskbar.
-. Click Login in Anypoint Exchange.
-. Search for the HL7 connector and click Install.
+. Click *Login* in Anypoint Exchange.
+. Search for the HL7 connector and click *Install*.
 . Follow the prompts to install the connector.
 . Repeat steps 3 and 4 to install the HL7 MLLP connector.
 
@@ -47,7 +47,7 @@ If you are coding a Mavenized Mule application, include this XML snippet in your
 </dependency>
 ----
 
-Inside the `<version>` tags, put the HL7 connector version number, or use the word `RELEASE` for the latest release or `SNAPSHOT` for the latest available version.
+Inside the `<version>` tags, enter the HL7 connector version number, or use the word `RELEASE` for the latest release or `SNAPSHOT` for the latest available version.
 
 == Create Schemas
 
@@ -72,11 +72,11 @@ For readability, the ESL structures shown here define all simple key-value pairs
 
 === Copying and Editing Schema Definitions
 
-HL7 schema definitions are distributed inside the edi-schemas-hl7-1.3.0.jar (see the See Also section of this document for the link). You can copy a message structure schema from this jar and edit it to match your specific needs. If you only need to make changes at the segment level you can just copy the message structure schema; if you need to change segment definitions you must also copy the basedefs.esl schema of the same version, since that file contains the segment, composite, and element definitions.
+HL7 schema definitions are distributed inside the `edi-schemas-hl7-1.3.0.jar`. You can copy a message structure schema from this jar and edit it to match your specific needs. If you only need to make changes at the segment level you can just copy the message structure schema; if you need to change segment definitions you must also copy the basedefs.esl schema of the same version, since that file contains the segment, composite, and element definitions.
 
 The EDI Schema Language Reference gives an overview of the ESL schema structure used by all the EDI connectors, including the HL7 EDI Connector. You should consult that for background on the structure of the schema definitions.
 
-Here's a sample HL7 message structure schema, for the standard v2.5.1 ADT_A05 message structure:
+Here's a sample HL7 message structure schema, for the standard v2.5.1 `ADT_A05` message structure:
 
 [source,yaml,linenums]
 ----
@@ -121,12 +121,12 @@ data:
 - { idRef: 'UB2', position: '29', usage: O }
 ----
 
-This shows the list of segments making up the ADT_A05 message structure, including the segment groups PROCEDURE and INSURANCE. Since the above is the standard definition (not the lax version), it includes mandatory segments (indicated with usage: M) as well as optional segments (indicated with usage: O). The full set of usage codes used for HL7 are:
+This shows the list of segments making up the `ADT_A05` message structure, including the segment groups `PROCEDURE` and `INSURANCE`. Since the above is the standard definition (not the lax version), it includes mandatory segments (indicated with usage: M) as well as optional segments (indicated with usage: O). The full set of usage codes used for HL7 are:
 
-* C for Conditional (equivalent to Optional)
-* M for Mandatory
-* O for Optional
-* U for Unused (accepted without warning when reading, but not present in the data passed on from the read; ignored when writing)
+* `C` for Conditional (equivalent to Optional)
+* `M` for Mandatory
+* `O` for Optional
+* `U` for Unused (accepted without warning when reading, but not present in the data passed on from the read; ignored when writing)
 
 The possible number of occurrences of a segment or group is given by the count value. This defaults to a value of 1,
 
@@ -134,9 +134,9 @@ If you just want to delete some segments from the message structure, or change s
 
 You can also add segments that are not present in the original message structure definition. For this we recommend you first remove the position values from all the existing segment and group definition lines in the schema, since otherwise you need to renumber everything following an added segment. If you remove the explict position numbers. segments and groups are assigned position numbers sequentially, and for most purposes these numbers are not seen by HL7 EDI Connector 3.1.0 applications.
 
-If you want to add a standard HL7 segment to a message structure, you just reference it with an idRef line at the appropriate place, and HL7 obtains the definition from the basedefs.esl file referenced as an import.
+If you want to add a standard HL7 segment to a message structure, you just reference it with an `idRef` line at the appropriate place, and HL7 obtains the definition from the basedefs.esl file referenced as an import.
 
-The following partial example shows CON segments added to an ADT_A05 message structure:
+The following partial example shows CON segments added to an `ADT_A05` message structure:
 
 [source,yaml,linenums]
 ----
@@ -183,11 +183,12 @@ java -jar edi-schemas-hl7-1.3.0-simplify.jar {input-schema} {output-schema} {sam
 
 Where:
 
-* input-schema is the message structure schema used to read the messages, which can be a file or a classpath reference to a supplied schema such as /hl7/v2_5_1/ADT_A05.esl.
-* output-schema is the file path for the simplified schema output
-* sample1...n are the file paths to the sample messages
+* `input-schema` is the message structure schema used to read the messages, which can be a file or a classpath reference to a supplied schema such as `/hl7/v2_5_1/ADT_A05.esl`.
+* `output-schema` is the file path for the simplified schema output.
+* `sample1...n` are the file paths to the sample messages.
 
-Note: Make sure the sample message files are saved with carriage return (CR) line endings, since this is the required HL7 segment delimiter - text editors generally use the default line ending for your operating system, which may not be correct.
+[NOTE]
+Make sure the sample message files are saved with carriage return (CR) line endings, since this is the required HL7 segment delimiter. Text editors generally use the default line ending for your operating system, which may not be correct.
 
 Here's a partial example of a simplified schema generated using this tool:
 
@@ -305,9 +306,9 @@ If you configure the connector with multiple message structure schemas (whether 
 
 HL7 defines the Message Type in the component values of MSH-09. The HL7 EDI Connector uses these component values to find the structure schema to be used for processing a receive message, according to the following rules:
 
-* If the MSH-09-01 Message Type value is ACK, always use the predefined ACK schema.
-* Otherwise, if the MSH-09-03 Message Structure value is present (a value such as ADT_A01), use the schema structure with that ID.
-* Otherwise, use a configured Event and Message to Message Structure Map to determine the message structure from the specified Event Type (MSH-09-02) and Message Type (MSH-09-01) values.
+* If the `MSH-09-01 Message Type` value is `ACK`, always use the predefined ACK schema.
+* Otherwise, if the `MSH-09-03 Message Structure` value is present (a value such as `ADT_A01`), use the schema structure with that ID.
+* Otherwise, use a configured Event and Message to Message Structure Map to determine the message structure from the specified Event Type (`MSH-09-02`) and Message Type (`MSH-09-01`) values.
 
 The Event and Message to Message Structure Map is an optional configuration parameter. It must be a YAML file consisting of a map from each Event Type to a map for each supported Message Type to the actual Message Structure. Here's a sample of what this looks like:
 
@@ -330,10 +331,10 @@ Each version of HL7 defines a different set of mappings from event type and mess
 
 After you install the connector and configure your schema customizations (if any), you can start using the connector. Create separate configurations for each implementation convention.
 
-. Click the Global Elements tab at the base of the canvas, and click Create.
-. In the Choose Global Type wizard, use the filter to locate and select, HL7 EDI: Configuration, and click OK.
+. Click the Global Elements tab at the base of the canvas, and click *Create*.
+. In the Choose Global Type wizard, use the filter to locate and select *HL7 EDI: Configuration*, and click *OK*.
 . Configure the parameters according to the connector reference.
-. Click OK to save the global connector configurations.
+. Click *OK* to save the global connector configurations.
 . Return to the Message Flow tab in Studio.
 
 === General Options
@@ -341,7 +342,7 @@ After you install the connector and configure your schema customizations (if any
 In the general options you can configure settings which apply to both reading and writing HL7 messages:
 
 * HL7 character encoding, always used for writing messages and used when reading messages unless a different encoding is specified by MSH-18 (Character Set)
-* Disable numeric prefixes for data keys - this option is *true* by default, which turns off numeric prefixes for segment data; the only reason to turn this option off is for compatibility with mappings defined for the HL7 EDI Connector 3.0.0
+* Disable numeric prefixes for data keys - this option is `true` by default, which turns off numeric prefixes for segment data; the only reason to turn this option off is for compatibility with mappings defined for the HL7 EDI Connector 3.0.0.
 * Manually create or edit the list of schemas.
 
 === Setting Your HL7 Identification in the Visual Editor
@@ -350,7 +351,7 @@ You can configure the Message Header (MSH) application and facility identificati
 
 The values you set are used when writing HL7 messages to supply the namespace ID, universal ID, and universal ID type, and are verified in receive messages. If you don't want to restrict incoming messages you can leave these blank, and set the values for outgoing messages on the write operation or the actual outgoing message. Values set on the write operation override the connector configuration, and values set directly on the message override both the connector configuration and any values set on the write operation.
 
-In Studio, these values are set in these Global Element Properties.
+In Studio, these values are set in Global Element Properties.
 
 * Self identification parameters identify your side of the trading partner relationship.
 +
@@ -473,24 +474,24 @@ You can set the following options if needed:
 [%header,cols="50a,50a"]
 |===
 |XML Value |Visual Studio Option
-|validateHL7Version="true" |Validate HL7 Message Version
-|eventMessageMap="/hl7/v2_5_1/event-message.yaml" |Event and message to message structure map path (required if using multiple message structures, unless the MSH-09-03 message structure value is always present in received messages)
-|processingId="PRODUCTION" |Required processing ID (to specify a particular processing ID required on receive messages, such as `P` for Production)
-|genericExtensionPattern="Z.." |Java regular pattern for generic extension segment names (to allow handling of extension segments as maps of field values)
-|valueLengthErrorFail="true" |Fail when value length outside allowed range
-|invalidCharacterInValueFail="true" |Fail when invalid character in value
-|wrongValuesRepeatsFail="true" |Fail when too many repeats of value
-|unknownSegmentFail="true" |Fail when unknown segment in message
-|segmentOutOfOrderFail="true" |Fail when segment out of order in message set
-|unusedSegmentPresentFail="true" |Fail when unused segment included in message set
-|wrongSegmentsRepeatsFail="true" |Fail when too many repeats of segment
+|`validateHL7Version="true"` |Validate HL7 Message Version
+|`eventMessageMap="/hl7/v2_5_1/event-message.yaml"` |Event and message to message structure map path (required if using multiple message structures, unless the MSH-09-03 message structure value is always present in received messages)
+|`processingId="PRODUCTION"` |Required processing ID (to specify a particular processing ID required on receive messages, such as `P` for Production)
+|`genericExtensionPattern="Z.."` |Java regular pattern for generic extension segment names (to allow handling of extension segments as maps of field values)
+|`valueLengthErrorFail="true"` |Fail when value length outside allowed range
+|`invalidCharacterInValueFail="true"` |Fail when invalid character in value
+|`wrongValuesRepeatsFail="true"` |Fail when too many repeats of value
+|`unknownSegmentFail="true"` |Fail when unknown segment in message
+|`segmentOutOfOrderFail="true"` |Fail when segment out of order in message set
+|`unusedSegmentPresentFail="true"` |Fail when unused segment included in message set
+|`wrongSegmentsRepeatsFail="true"` |Fail when too many repeats of segment
 |===
 
 === Setting Your Schema Locations
 
-You can only configure schema locations in the Anypoint Studio XML view.
+You can only configure schema locations in Studio's XML view.
 
-In Anypoint Studio, switch to the XML view by clicking Configuration XML and modify your HL7 EDI configuration to include a list of all the schemas you wish to include by adding an `+<http://edischema[edi:schema]>+` element for each document type:
+In Studio, switch to the XML view by clicking *Configuration XML* and modify your HL7 EDI configuration to include a list of all the schemas you wish to include by adding an `+<http://edischema[edi:schema]>+` element for each document type:
 
 [source,xml,linenums]
 ----
@@ -506,16 +507,9 @@ After you create a global element for your HL7 EDI, configure the message struct
 
 == Use HL7 EDI Inside Mule Flows
 
-You can use HL7 EDI connector in your flows for reading and writing messages, and sending acknowledgments.
+Use HL7 EDI connector in your flows for reading and writing messages, and sending acknowledgments.
 
-Topics:
-
-* Understanding the HL7 Message Structure
-* Reading and Validating HL7 ER7 Messages
-* Writing HL7 EDI Messages
-* Sending Acknowledgments
-
-== Understanding the HL7 Message Structure
+=== Understanding the HL7 Message Structure
 
 The HL7 connector reads and writes HL7 documents into or from a canonical ER7 message structure. This structure is represented as a hierarchy of Java Maps and Lists, which can be manipulated using DataWeave or code. Each transaction has its own structure which is defined in the schemas.
 
@@ -524,13 +518,13 @@ The HL7 message contains the following keys:
 [%header,cols="40a,60a"]
 |===
 |Key name |Description
-|ACK (read only) |ACK message generated in response to the input data. The MSA-1 acknowledgment code value is based on the parser configuration settings. To send an acknowledgment, see the Sending Acknowledgments section below.
-|Data (read or write) |Wrapper for message data, with a key matching the message structure ID value linking to the actual data. This allows different messages to be included in the metadata and handled in DataWeave mappings.
-|Delimiters (read only) |The delimiters used for the message. The characters in the string are interpreted based on position, in the following order: (component separator), (repetition separator), (escape character), (subcomponent separator).
-|Errors (read only) |A list of errors which are associated with the input message. See the HL7Error structure description in the Reading and Validating HL7 Messages section below.
-|Id |Message structure ID.
-|MSH (read only) |Link to received MSH segment data.
-|Name (read only) |Message structure name.
+|`ACK` (read only) |ACK message generated in response to the input data. The MSA-1 acknowledgment code value is based on the parser configuration settings. To send an acknowledgment, see the Sending Acknowledgments section below.
+|`Data` (read or write) |Wrapper for message data, with a key matching the message structure ID value linking to the actual data. This allows different messages to be included in the metadata and handled in DataWeave mappings.
+|`Delimiters` (read only) |The delimiters used for the message. The characters in the string are interpreted based on position, in the following order: (component separator), (repetition separator), (escape character), (subcomponent separator).
+|`Errors` (read only) |A list of errors which are associated with the input message. See the HL7Error structure description in the Reading and Validating HL7 Messages section below.
+|`Id` |Message structure ID.
+|`MSH` (read only) |Link to received MSH segment data.
+|`Name` (read only) |Message structure name.
 |===
 
 Individual messages have their own maps, with keys matching the segments of the message. For instance, an ACK message would use the message structure ID `ACK`, and the data for the ACK message sent or received would be present as an `ACK` value in the `Data` map. The ACK message is itself a map, and the segments and groups of the message are represented as maps (in the case of singleton instances) or lists of maps (for repeating instances) with positional keys.
@@ -544,8 +538,9 @@ The maps containing extension segment data are added to the basic message map in
 
 [%header,cols="30a,70a"]
 |===
-|Ident |The extension segment identifier (tag).
-|Position |The position of the segment within the message structure, as a two digit string. This is the same as the position of the immediately preceding defined segment, as defined in the schema. If a ZVN extension segment is used following the EVN segment in an ADT_A01 message structure, the ZVN is at position 03).
+| Key |Description
+|`Ident` |The extension segment identifier (tag).
+|`Position` |The position of the segment within the message structure, as a two digit string. This is the same as the position of the immediately preceding defined segment, as defined in the schema. If a ZVN extension segment is used following the EVN segment in an ADT_A01 message structure, the ZVN is at position 03).
 |===
 
 If extension segments are used in nested groups, the list containing those segments are included in the map representing that group. Extension segments are ordered by position in the lists created by the parser, and must also be ordered by position when writing.
@@ -563,14 +558,14 @@ Error data entered in the receive data map uses the HL7Error class, a read-only 
 [%header,cols="30a,70a"]
 |===
 |Property |Description
-|segment |The zero-based index within the input of the segment causing the error.
-|fatal |Flag for a fatal error, meaning the associated message was rejected as a result of the error.
-|errorType |Enumeration for the different types of errors defined by the HL7 standards (ERR-3 values).
-|errorCode |Error code, as defined by the HL7 standard for the indicated type of error.
-|errorText |Text description of the error.
+|`segment` |The zero-based index within the input of the segment causing the error.
+|`fatal` |Flag for a fatal error, meaning the associated message was rejected as a result of the error.
+|`errorType` |Enumeration for the different types of errors defined by the HL7 standards (ERR-3 values).
+|`errorCode` |Error code, as defined by the HL7 standard for the indicated type of error.
+|`errorText` |Text description of the error.
 |===
 
-Error data is returned by the read operation as an optional list with the "Errors" key.
+Error data is returned by the read operation as an optional list with the `Errors` key.
 
 === Writing HL7 EDI Messages
 
@@ -615,7 +610,7 @@ For example:
 
 The generated ACK messages have MSH data set up for sending back to the sender of the original message, so you don't need to change anything in the data to do the send.
 
-If you include an ACK message schema in your configuration, that schema is used to both receive ACK messages and generate ACK messages. If you don't specify an ACK schema, the standard hl7/v2_5_1/ACK.esl schema is used by default.
+If you include an ACK message schema in your configuration, that schema is used to both receive ACK messages and generate ACK messages. If you don't specify an ACK schema, the standard `hl7/v2_5_1/ACK.esl` schema is used by default.
 
 image::ack-datasense.jpg[Default ACK message structure]
 
@@ -739,7 +734,7 @@ In the HL7 v3.0 connector, the sections that follow list components that have be
 
 === HL7 Message Component
 
-The creation of a message can be done by generating a HL7 Message through DataWeave and then invoking the connector's Write operation.
+The creation of a message can be done by generating a HL7 Message through DataWeave and then invoking the connector's write operation.
 
 The following flow outputs the `MSH|\^~\&|TestSendingSystem|MCM||^12399|` message.
 
@@ -783,8 +778,6 @@ The HL7 ACK functionality is contained in the connector. The ACK message is auto
 The Append Segment component can be replaced using DataWeave to manipulate the Data object in the HL7 Message structure obtained after a read operation.
 
 The following example adds `AL1|2|10001|^Penicillin||Produces hives` to the incoming message.
-
-Incoming message:
 
 [source,yaml,linenums]
 ----

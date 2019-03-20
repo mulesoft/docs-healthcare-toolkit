@@ -5,25 +5,25 @@ endif::[]
 :keywords: hl7, healthcare, toolkit, hapi, mllp, er7
 :license-info: Enterprise, CloudHub
 
-Mule Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
+Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
-This document assumes a working knowledge of Mule Runtime and Anypoint Studio.
+This document assumes a working knowledge of Mule and Studio.
 
 == Overview
 
 Health Level Seven International is a standards development organization that defines a set of standards for the transport and communication of healthcare information.
 
-The version of the MuleSoft HL7 connector is different from the HL7 version numbering. The HL7 connector supports HL7 software versions v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8, and 2.8.1.
+The version of MuleSoft's HL7 connector is different from the HL7 version numbering. The HL7 connector supports HL7 software versions v2.1, v2.2, v2.3.1, v2.3, v2.4, v2.5, v2.5.1, v2.6, 2.7, 2.7.1, 2.8, and 2.8.1.
 
-Mule Healthcare Toolkit allows you to send and receive HL7 messages in ER7 format over MLLP and other transport protocols and corresponding connectors supported by Mule, such as HTTP. Minimal Lower Layer Protocol (MLLP) uses the HL7 MLLP connector.
+Healthcare Toolkit allows you to send and receive HL7 messages in ER7 format over MLLP and other transport protocols and corresponding connectors supported by Mule, such as HTTP. Minimal Lower Layer Protocol (MLLP) uses the HL7 MLLP connector.
 
-This page describes the functionality included in Mule Healthcare Toolkit, and provides installation instructions.
+This page describes the functionality included in Healthcare Toolkit, and provides installation instructions.
 
 == Toolkit Contents
 
-Mule Healthcare Toolkit includes the following elements.
+Healthcare Toolkit includes the following elements.
 
-[%header,cols="20s,80a"]
+[%header,cols="20a,80a"]
 |===
 |Type |Description
 |Connector |xref:hl7-edi.adoc[HL7 EDI] - Electronic Data Interchange (EDI) schemas, configuration, and operations.
@@ -34,18 +34,18 @@ Mule Healthcare Toolkit includes the following elements.
 |===
 
 
-== Installing the Mule 4 Healthcare Toolkit
+== Installing the Healthcare Toolkit for Mule 4
 
-Mule Healthcare Toolkit is available for free on a trial basis in non-production environments:
+Healthcare Toolkit is available for free on a trial basis in non-production environments:
 
-. In Anypoint Studio, click **Search in Exchange** in Mule Palette.
+. In Studio, click **Search in Exchange** in *Mule Palette*.
 . Log into Exchange if you aren't already.
 . Search for HL7.
 . Select **HL7 Connector - Mule 4** (HL7 EDI) and **HL7 MML - Mule 4**.
-. Add both connectors to the Selected modules pane.
-. Select **Finish** to make the connectors available in Mule Palette.
+. Add both connectors to the *Selected modules* pane.
+. Select **Finish** to make the connectors available in *Mule Palette*.
 
-To request a license to use the Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or https://www.mulesoft.com/contact[the MuleSoft sales team].
+To request a license to use Healthcare Toolkit components in a production environment, contact your MuleSoft account representative or https://www.mulesoft.com/contact[the MuleSoft sales team].
 
 == See Also
 
