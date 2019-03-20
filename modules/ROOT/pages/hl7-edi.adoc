@@ -28,7 +28,7 @@ To use the HL7 EDI connector in a production environment, you must have purchase
 
 == To Install this Connector
 
-. In Anypoint Studio, click the Exchange icon in the Studio taskbar.
+. In Anypoint Studio (Studio), click the Exchange icon in the Studio taskbar.
 . Click *Login* in Anypoint Exchange.
 . Search for the HL7 connector and click *Install*.
 . Follow the prompts to install the connector.
@@ -72,7 +72,7 @@ For readability, the ESL structures shown here define all simple key-value pairs
 
 === Copying and Editing Schema Definitions
 
-HL7 schema definitions are distributed inside the `edi-schemas-hl7-1.3.0.jar`. You can copy a message structure schema from this jar and edit it to match your specific needs. If you only need to make changes at the segment level you can just copy the message structure schema; if you need to change segment definitions you must also copy the basedefs.esl schema of the same version, since that file contains the segment, composite, and element definitions.
+HL7 schema definitions are distributed inside the `edi-schemas-hl7-1.3.0.jar`. You can copy a message structure schema from this JAR and edit it to match your specific needs. If you only need to make changes at the segment level you can just copy the message structure schema; if you need to change segment definitions you must also copy the basedefs.esl schema of the same version, since that file contains the segment, composite, and element definitions.
 
 The EDI Schema Language Reference gives an overview of the ESL schema structure used by all the EDI connectors, including the HL7 EDI Connector. You should consult that for background on the structure of the schema definitions.
 
@@ -345,7 +345,7 @@ In the general options you can configure settings which apply to both reading an
 * Disable numeric prefixes for data keys - this option is `true` by default, which turns off numeric prefixes for segment data; the only reason to turn this option off is for compatibility with mappings defined for the HL7 EDI Connector 3.0.0.
 * Manually create or edit the list of schemas.
 
-=== Setting Your HL7 Identification in the Visual Editor
+=== Set Your HL7 Identification in the Studio Visual Editor
 
 You can configure the Message Header (MSH) application and facility identification for you and your trading partner on the HL7 EDI connector configuration.
 
@@ -473,23 +473,23 @@ You can set the following options if needed:
 
 [%header,cols="50a,50a"]
 |===
-|XML Value |Visual Studio Option
+|XML Value | Studio Option
 |`validateHL7Version="true"` |Validate HL7 Message Version
 |`eventMessageMap="/hl7/v2_5_1/event-message.yaml"` |Event and message to message structure map path (required if using multiple message structures, unless the MSH-09-03 message structure value is always present in received messages)
 |`processingId="PRODUCTION"` |Required processing ID (to specify a particular processing ID required on receive messages, such as `P` for Production)
 |`genericExtensionPattern="Z.."` |Java regular pattern for generic extension segment names (to allow handling of extension segments as maps of field values)
-|`valueLengthErrorFail="true"` |Fail when value length outside allowed range
-|`invalidCharacterInValueFail="true"` |Fail when invalid character in value
-|`wrongValuesRepeatsFail="true"` |Fail when too many repeats of value
-|`unknownSegmentFail="true"` |Fail when unknown segment in message
-|`segmentOutOfOrderFail="true"` |Fail when segment out of order in message set
-|`unusedSegmentPresentFail="true"` |Fail when unused segment included in message set
-|`wrongSegmentsRepeatsFail="true"` |Fail when too many repeats of segment
+|`valueLengthErrorFail="true"` |Fail when the length of a value falls outside the allowed range
+|`invalidCharacterInValueFail="true"` |Fail when a value contains an invalid character
+|`wrongValuesRepeatsFail="true"` |Fail when a value is repeated too many times
+|`unknownSegmentFail="true"` |Fail when an unknown segment is in a message
+|`segmentOutOfOrderFail="true"` |Fail when a segment is out of order in message set
+|`unusedSegmentPresentFail="true"` |Fail when an unused segment is included in a message set
+|`wrongSegmentsRepeatsFail="true"` |Fail when a segment is repeated too many times
 |===
 
 === Setting Your Schema Locations
 
-You can only configure schema locations in Studio's XML view.
+You can only configure schema locations in the Studio XML view.
 
 In Studio, switch to the XML view by clicking *Configuration XML* and modify your HL7 EDI configuration to include a list of all the schemas you wish to include by adding an `+<http://edischema[edi:schema]>+` element for each document type:
 
@@ -507,11 +507,11 @@ After you create a global element for your HL7 EDI, configure the message struct
 
 == Use HL7 EDI Inside Mule Flows
 
-Use HL7 EDI connector in your flows for reading and writing messages, and sending acknowledgments.
+Use the HL7 EDI connector in your flows for reading and writing messages, and sending acknowledgments.
 
 === Understanding the HL7 Message Structure
 
-The HL7 connector reads and writes HL7 documents into or from a canonical ER7 message structure. This structure is represented as a hierarchy of Java Maps and Lists, which can be manipulated using DataWeave or code. Each transaction has its own structure which is defined in the schemas.
+The HL7 connector reads and writes HL7 documents into or from a canonical ER7 message structure. This structure is represented as a hierarchy of Java maps and lists, which can be manipulated using DataWeave or code. Each transaction has its own structure which is defined in the schemas.
 
 The HL7 message contains the following keys:
 
@@ -519,8 +519,8 @@ The HL7 message contains the following keys:
 |===
 |Key name |Description
 |`ACK` (read only) |ACK message generated in response to the input data. The MSA-1 acknowledgment code value is based on the parser configuration settings. To send an acknowledgment, see the Sending Acknowledgments section below.
-|`Data` (read or write) |Wrapper for message data, with a key matching the message structure ID value linking to the actual data. This allows different messages to be included in the metadata and handled in DataWeave mappings.
-|`Delimiters` (read only) |The delimiters used for the message. The characters in the string are interpreted based on position, in the following order: (component separator), (repetition separator), (escape character), (subcomponent separator).
+|`Data` (read or write) |Wrapper for message data with a key matching the message structure ID value linking to the actual data. This allows different messages to be included in the metadata and handled in DataWeave mappings.
+|`Delimiters` (read only) |The delimiters used for the message. The characters in the string are interpreted based on position in the following order: (component separator), (repetition separator), (escape character), (subcomponent separator).
 |`Errors` (read only) |A list of errors which are associated with the input message. See the HL7Error structure description in the Reading and Validating HL7 Messages section below.
 |`Id` |Message structure ID.
 |`MSH` (read only) |Link to received MSH segment data.
