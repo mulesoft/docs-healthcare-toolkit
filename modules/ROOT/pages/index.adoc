@@ -7,7 +7,7 @@ endif::[]
 
 Healthcare Toolkit is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
-This document assumes a working knowledge of Mule and Studio.
+This document assumes a working knowledge of Mule and Anypoint Studio (Studio).
 
 == Overview
 

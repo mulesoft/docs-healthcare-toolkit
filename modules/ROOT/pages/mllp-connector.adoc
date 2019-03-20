@@ -63,7 +63,7 @@ image::mllp-advanced.png[HL7 MLLP Advanced Tab]
 [%header%autowidth.spread]
 |===
 |Element |Description
-|*Address* | The complete URI location of the host to which the Endpoint must connect. This parameter is mutually exclusive of the other following parameters:
+|*Address* | The complete URI location of the host to which the endpoint must connect. This parameter is mutually exclusive of the other following parameters:
 
 * *Host*
 * *Port*
@@ -80,8 +80,8 @@ image::mllp-references.png[HL7 MLLP References Tab]
 [%header%autowidth.spread]
 |===
 |Element |Description
-|`Connector Reference` | References an HL7 MLLP connector configured as a global element.
-|`Endpoint Reference` | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
+|*Connector Reference* | References an HL7 MLLP connector configured as a global element.
+|*Endpoint Reference* | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
 
 * Host (General tab)
 * Port (General tab)
