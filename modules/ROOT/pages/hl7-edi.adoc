@@ -69,7 +69,7 @@ The HL7 EDI uses a YAML format called ESL (for EDI Schema Language) to represent
 To configure the HL7 EDI according to your implementation convention, define an _overlay schema_. An overlay schema is a special form of ESL that allows you to modify a base schema, such as an HL7 2.5.1 ADT_A01 schema, with your specific conventions. (You don't need an overlay schema if you're using the structure defined by the standard, but you can use an overlay to tailor the structure to your usage.)
 
 You can also define your own schemas from scratch.
-See xref:partner-manager::edi-schema-language-reference.adoc[EDI Schema Language Reference] for more details.
+See xref:1.0@partner-manager::edi-schema-language-reference.adoc[EDI Schema Language Reference] for more details.
 
 [NOTE]
 ====
@@ -86,7 +86,7 @@ To specify a schema according to your implementation convention:
 . Customize the overall structure - segment usage, positions, groups and counts.
 . Customize segments - including usage and counts.
 
-Overlay schemas are very similar in structure to a xref:partner-manager::edi-schema-language-reference.adoc[complete schema definition], but instead of providing all the details of the schema structure, they only list changes. Overlay schemas specify how to use implementation conventions with a particular trading partner to extend and customize the standard.
+Overlay schemas are very similar in structure to a xref:1.0@partner-manager::edi-schema-language-reference.adoc[complete schema definition], but instead of providing all the details of the schema structure, they only list changes. Overlay schemas specify how to use implementation conventions with a particular trading partner to extend and customize the standard.
 
 The following example shows the start of a sample overlay schema that modifies the basic HL7 2.5.1 ADT_A01 message structure definition. This sample customizes the `PD1` segment and specifies that it is mandatory, so that an error occurs if the segment is not present in a receive or send message.
 
