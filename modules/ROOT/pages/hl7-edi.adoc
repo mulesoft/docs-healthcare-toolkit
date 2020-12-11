@@ -963,4 +963,4 @@ This feature is no longer supported by the connector. The encoding transformatio
 * xref:partner-manager::edi-schema-language-reference.adoc[EDI Schema Language Reference]
 * xref:mllp-connector.adoc[HL7 MLLP Connector guide]
 * link:{attachmentsdir}/hl7v3.1_demo.zip[HL7 Demo zip file]
-* https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
+* https://mulesoft.github.io/mule3-hl7-connector/[HL7 Technical Reference]
