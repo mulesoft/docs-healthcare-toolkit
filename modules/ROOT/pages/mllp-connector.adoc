@@ -10,8 +10,7 @@ The Mule HL7 MLLP transport provides connectivity and parsing functionality for 
 
 == Prerequisites
 
-This document assumes that you are familiar with HL7, Mule, Anypoint Connectors,
-Anypoint Studio essentials, elements in a Mule flow, and global elements.
+This document assumes that you are familiar with HL7, Mule, Anypoint Connectors, Studio essentials, elements in a Mule flow, and global elements.
 
 === Compatibility
 
@@ -24,9 +23,9 @@ Anypoint Studio essentials, elements in a Mule flow, and global elements.
 
 == To Install this Connector
 
-. In Anypoint Studio, click the Exchange icon in the Studio taskbar.
-. Click Login in Anypoint Exchange.
-. Search for the connector and click Install.
+. In Studio, click the Exchange icon in the Studio taskbar.
+. Click *Login* in Exchange.
+. Search for the connector and click *Install*.
 . Follow the prompts to install the connector.
 
 When Studio has an update, a message displays in the lower right corner, which you can click to install the update.
@@ -35,9 +34,9 @@ When Studio has an update, a message displays in the lower right corner, which y
 
 Follow the steps below to create an HL7 MLLP global element:
 
-. Click the Global Elements tab at the base of the canvas.
-. On the Global Mule Configuration Elements screen, click Create.
-. In the Choose Global Type wizard, expand Connector Endpoints, and then select HL7 MLLP: Configuration.
+. Click the *Global Elements* tab at the base of the canvas.
+. On the *Global Mule Configuration Elements* screen, click *Create*.
+. In the Choose Global Type wizard, expand *Connector Endpoints*, and then select *HL7 MLLP: Configuration*.
 
 The HL7 MLLP endpoint creates a channel to receive or send messages over HL7 MLLP and allows Mule applications to send and receive messages on specified ports.
 
@@ -52,9 +51,9 @@ image::mllp-general.png[HL7 MLLP General Tab]
 [%header%autowidth.spread]
 |===
 |Element |Description
-|Display Name |Name of the building block as it appears in the flow.
-|Host |Name of the host to which the endpoint must connect.
-|Port |Port number for the connection.
+|*Display Name* |Name of the building block as it appears in the flow.
+|*Host* |Name of the host to which the endpoint must connect.
+|*Port* |Port number for the connection.
 |===
 
 * Advanced tab
@@ -64,17 +63,13 @@ image::mllp-advanced.png[HL7 MLLP Advanced Tab]
 [%header%autowidth.spread]
 |===
 |Element |Description
-|Address | The complete URI location of the host to which the Endpoint must connect. This parameter is mutually exclusive of the other following parameters:
+|*Address* | The complete URI location of the host to which the endpoint must connect. This parameter is mutually exclusive of the other following parameters:
 
-* Host
-* Port
-* Endpoint Reference.
-|Response Timeout |The timeout for a response, in milliseconds.
-|Exchange Patterns |Select between two possible exchange patterns.
-
-* one-way: An inbound endpoint only receives data and does not send anything back to the originating application. An outbound endpoint only sends data.
-* request-response: Allows two-way communication between the endpoint and the external application
-
+* *Host*
+* *Port*
+* *Endpoint Reference*
+|*Response Timeout* |The timeout for a response, in milliseconds.
+|*Exchange Patterns* |Select between two possible exchange patterns: *one-way* allows an inbound endpoint to only receive data and does not send anything back to the originating application and an outbound endpoint only sends data; *request-response* allows two-way communication between the endpoint and the external application.
 |===
 
 
@@ -85,15 +80,15 @@ image::mllp-references.png[HL7 MLLP References Tab]
 [%header%autowidth.spread]
 |===
 |Element |Description
-|Connector Reference | References an HL7 MLLP connector configured as a global element.
-|Endpoint Reference | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
+|*Connector Reference* | References an HL7 MLLP connector configured as a global element.
+|*Endpoint Reference* | Allows you to reference an HL7 MLLP endpoint configured as a global element. This parameter is mutually exclusive with the other parameters shown below:
 
 * Host (General tab)
 * Port (General tab)
 * Address (Advanced tab).
-|Global Transformers (Request section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
-|Global Transformers (Response section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
-|Transformers to be applied (Request and Response sections) | Use the Edit icons to edit, reorder or remove selected transformers.
+|`Global Transformers` (Request section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
+|`Global Transformers` (Response section) | Add transformers that the endpoint applies to information it receives. Use the Add icon next to the Global Transformers field to select transformers to add.
+|`Transformers to be applied` (Request and Response sections) | Use the Edit icons to edit, reorder or remove selected transformers.
 |===
 
 == Using the Connector
@@ -152,22 +147,22 @@ image::mllp-use-case.png[]
 +
 [%header%autowidth.spread]
 |===
-|Parameter|Value
-|Connector Configuration| HTTP_Listener_Configuration
-|Path|/send
+|Parameter |Value
+|`Connector Configuration` | `HTTP_Listener_Configuration`
+|`Path` |`/send`
 |===
 +
-. Drag a HL7 MLLP component next to the HTTP endpoint.
+. Drag an HL7 MLLP component next to the HTTP endpoint.
 . Configure HL7 MLLP with the following values in General tab:
 +
 [%header%autowidth.spread]
 |===
 |Parameter|Value
-|Host| localhost
-|Port| 5004
+|*Host*| `localhost`
+|*Port*| `5004`
 |===
 +
-. Drag a Set Payload component before HL7 MLLP transport and set a HL7 message:
+. Drag a Set Payload component before HL7 MLLP transport and set an HL7 message:
 +
 [source,xml]
 ----
@@ -180,8 +175,8 @@ image::mllp-use-case.png[]
 [%header%autowidth.spread]
 |===
 |Parameter|Value
-|Host| localhost
-|Port| 5004
+|*Host*| `localhost`
+|*Port*| `5004`
 |===
 +
 . Deploy the application, open a web browser and make a request to the URL `+http://localhost:8081/send+`.
