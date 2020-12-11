@@ -27,7 +27,7 @@ Healthcare Toolkit includes the following elements.
 |===
 |Type |Description
 |Connector |xref:hl7-edi.adoc[HL7 EDI] - Electronic Data Interchange (EDI) schemas, configuration, and operations.
-|API Documentation |https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
+|API Documentation |https://mulesoft.github.io/mule3-hl7-connector/[HL7 Technical Reference]
 |Connector |xref:mllp-connector.adoc[HL7 MLLP Reference] - Minimal Lower Layer Protocol (MLLP)
 |Testing |xref:connector-testpanel.adoc[Connector Testing with TestPanel]
 |Release Notes |xref:release-notes::connector/hl7-connector-release-notes.adoc[HL7 EDI Connector Release Notes], xref:release-notes::connector/hl7-mllp-connector-release-notes.adoc[HL7 MLLP Connector Release Notes]
@@ -49,7 +49,7 @@ To request a license to use Healthcare Toolkit components in a production enviro
 
 == See Also
 
-* https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
+* https://mulesoft.github.io/mule3-hl7-connector/[HL7 Technical Reference]
 * http://www.hl7.org[Health Level Seven International]
 * Use the xref:connector-testpanel.adoc[Connector Testing with TestPanel] to test your HL7 connector application.
 * xref:mllp-connector.adoc[HL7 MLLP Reference]

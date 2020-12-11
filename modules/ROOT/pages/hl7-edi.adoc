@@ -955,5 +955,7 @@ This feature is no longer supported by the connector. The encoding transformatio
 * https://s3-us-west-2.amazonaws.com/mulesoft-sites-vendorcontent/edi-schemas-hl7-1.3.0-simplify.jar[edi-schemas-hl7-1.3.0-simplify.jar]
 * xref:1.0@partner-manager::edi-schema-language-reference.adoc[EDI Schema Language Reference]
 * xref:mllp-connector.adoc[HL7 MLLP Connector guide]
+* link:{attachmentsdir}/hl7v3.1_demo.zip[HL7 Demo zip file]
+* https://mulesoft.github.io/mule3-hl7-connector/[HL7 Technical Reference]
 * https://docs.mulesoft.com/downloads/healthcare-toolkit/3.1/hl7v3.1_demo.zip[HL7 Demo zip file]
-* https://mulesoft.github.io/mule-hl7-connector/[HL7 Technical Reference]
+
