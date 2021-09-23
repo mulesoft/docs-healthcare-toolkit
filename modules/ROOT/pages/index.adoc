@@ -41,7 +41,7 @@ Healthcare Toolkit is available for free on a trial basis in non-production envi
 . In Studio, click **Search in Exchange** in *Mule Palette*.
 . Log into Exchange if you aren't already.
 . Search for HL7.
-. Select **HL7 Connector - Mule 4** (HL7 EDI) and **HL7 MML - Mule 4**.
+. Select **HL7 Connector - Mule 4** (HL7 EDI) and **HL7 MLLP - Mule 4**.
 . Add both connectors to the *Selected modules* pane.
 . Select **Finish** to make the connectors available in *Mule Palette*.
 
