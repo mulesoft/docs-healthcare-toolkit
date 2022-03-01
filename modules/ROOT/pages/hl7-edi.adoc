@@ -132,7 +132,7 @@ The possible number of occurrences of a segment or group is given by the count v
 
 If you just want to delete some segments from the message structure, or change some segment requirements from mandatory to optional (or vice versa), you can easily make the change in your copy of the schema and use the modified version in your application.
 
-You can also add segments that are not present in the original message structure definition. For this we recommend you first remove the position values from all the existing segment and group definition lines in the schema, since otherwise you need to renumber everything following an added segment. If you remove the explicit position numbers. segments and groups are assigned position numbers sequentially, and for most purposes these numbers are not seen by HL7 EDI Connector 3.1.0 applications.
+You can also add segments that are not present in the original message structure definition. For this, it is best if you first remove the position values from all the existing segment and group definition lines in the schema, otherwise, you must renumber everything following an added segment. If you remove the explicit position numbers, segments and groups are assigned position numbers sequentially, and for most purposes, these numbers are not seen by HL7 EDI Connector 3.1.0 applications.
 
 If you want to add a standard HL7 segment to a message structure, you just reference it with an `idRef` line at the appropriate place, and HL7 obtains the definition from the basedefs.esl file referenced as an import.
 
