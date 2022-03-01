@@ -244,7 +244,7 @@ The usage value may be:
 
 === Determining the HL7 Schema Location
 
-To use the connector, you need to know the locations of the schemas in your project. If you're using the out of the box HL7 schemas and not customizing anything, the schema location follows the  `/hl7/{version}/{message structure}.esl` pattern. For example, if you're using the `2.5.1` version and the ADT_A01 message structure, your schema location is `/hl7/v2_5_1/ADT_A01.esl`.
+To use the connector, you need to know the locations of the schemas in your project. If you're using the out of the box HL7 schemas and not customizing anything, the schema location follows the  `/hl7/\{version}/{message structure}.esl` pattern. For example, if you're using the `2.5.1` version and the ADT_A01 message structure, your schema location is `/hl7/v2_5_1/ADT_A01.esl`.
 
 If you're creating a custom implementation convention (whether full schemas, or overlay schemas), you should put your schemas under a directory in `src/main/app` and refer to the location using `${app.home}`. For example, if you've put your ADT_A01 schema under `src/main/app/mypartner/ADT_A01.esl`, your schema location is `${app.home}/mypartner/ADT_A01.esl`.
 The Mule Runtime automatically checks `src/main/app`
