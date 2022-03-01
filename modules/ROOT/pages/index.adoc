@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-*_Enterpise, CloudHub_*
+*_Enterprise, CloudHub_*
 
 The *Mule Healthcare Toolkit* is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 version v.2.x messages with Mule.
 
