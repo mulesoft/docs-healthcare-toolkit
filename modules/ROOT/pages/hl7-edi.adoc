@@ -132,7 +132,7 @@ The possible number of occurrences of a segment or group is given by the count v
 
 If you just want to delete some segments from the message structure, or change some segment requirements from mandatory to optional (or vice versa), you can easily make the change in your copy of the schema and use the modified version in your application.
 
-You can also add segments that are not present in the original message structure definition. For this we recommend you first remove the position values from all the existing segment and group definition lines in the schema, since otherwise you need to renumber everything following an added segment. If you remove the explict position numbers. segments and groups are assigned position numbers sequentially, and for most purposes these numbers are not seen by HL7 EDI Connector 3.1.0 applications.
+You can also add segments that are not present in the original message structure definition. For this we recommend you first remove the position values from all the existing segment and group definition lines in the schema, since otherwise you need to renumber everything following an added segment. If you remove the explicit position numbers. segments and groups are assigned position numbers sequentially, and for most purposes these numbers are not seen by HL7 EDI Connector 3.1.0 applications.
 
 If you want to add a standard HL7 segment to a message structure, you just reference it with an `idRef` line at the appropriate place, and HL7 obtains the definition from the basedefs.esl file referenced as an import.
 
@@ -286,9 +286,9 @@ composites:
   ...
 ----
 
-Unused components of a segment cannot just be dropped from the segment definition (unless they're at the end of the segment), so the simplification tool just substitues a "varies" data type for the component and marks it with Usage: U for Unused. The repetition count for the "varies" remains the same as for the original component in this case, but it will not show up in the DataSense view of the data you see in Data Weave.
+Unused components of a segment cannot just be dropped from the segment definition (unless they're at the end of the segment), so the simplification tool just substitutes a "varies" data type for the component and marks it with Usage: U for Unused. The repetition count for the "varies" remains the same as for the original component in this case, but it will not show up in the DataSense view of the data you see in Data Weave.
 
-When the schema simplification tool checks which data is present in the messages it handles each occurrence of a composite in context, so different usages of the same composite may have differnt values present. When this happens the composite is defined more than once, with different identifiers. The CE composite in the above example shows this.
+When the schema simplification tool checks which data is present in the messages it handles each occurrence of a composite in context, so different usages of the same composite may have different values present. When this happens the composite is defined more than once, with different identifiers. The CE composite in the above example shows this.
 
 The simplified schema retains the segment postions from the original schema. You can delete these position values from the simplified schema if you want, since they're not used by the HL7 EDI Connector unless you use position prefixes on segment keys (one of the connector configuration options).
 
@@ -958,4 +958,3 @@ This feature is no longer supported by the connector. The encoding transformatio
 * link:{attachmentsdir}/hl7v3.1_demo.zip[HL7 Demo zip file]
 * https://mulesoft.github.io/mule3-hl7-connector/[HL7 Technical Reference]
 * https://docs.mulesoft.com/downloads/healthcare-toolkit/3.1/hl7v3.1_demo.zip[HL7 Demo zip file]
-
