@@ -73,7 +73,7 @@ This tab only contains the *Name* field, where you may optionally type a meaning
 |Name (Studio Only) |Name of the building block as it appears in the flow |`name="connectorName"`
 |===
 
-image::hl7-gloabl-advanced.png[hl7_gloabl_advanced]
+image::hl7-global-advanced.png[hl7_global_advanced]
 
 *Advanced*
 
