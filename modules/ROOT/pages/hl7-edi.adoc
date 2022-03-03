@@ -288,7 +288,7 @@ composites:
 
 Unused components of a segment cannot just be dropped from the segment definition (unless they're at the end of the segment), so the simplification tool just substitutes a "varies" data type for the component and marks it with Usage: U for Unused. The repetition count for the "varies" remains the same as for the original component in this case, but it will not show up in the DataSense view of the data you see in Data Weave.
 
-When the schema simplification tool checks which data is present in the messages it handles each occurrence of a composite in context, so different usages of the same composite may have different values present. When this happens the composite is defined more than once, with different identifiers. The CE composite in the above example shows this.
+When the schema simplification tool checks which data is present in the messages, it handles each occurrence of a composite in context, so different usages of the same composite may have different values present. When this happens, the composite is defined more than once with different identifiers. The CE composite in the above example shows this.
 
 The simplified schema retains the segment postions from the original schema. You can delete these position values from the simplified schema if you want, since they're not used by the HL7 EDI Connector unless you use position prefixes on segment keys (one of the connector configuration options).
 
