@@ -7,7 +7,7 @@ endif::[]
 
 The *Mule Healthcare Toolkit* is a collection of features that facilitates integration with healthcare systems by providing the tools needed to easily create, read, and transform HL7 messages within Mule.
 
-This document assumes a working knowledge of Mule Runtime and Anypoint Studio. To find out more about these applications, consult the xref:3.9@mule-runtime::index.adoc[Mule User Guide] and xref:6@studio::index.adoc[Anypoint Studio documentation].
+This document assumes a working knowledge of Mule Runtime and Anypoint Studio. To find out more about these applications, consult the xref:3.9@mule-runtime::index.adoc[Mule User Guide] and xref:6.x@studio::index.adoc[Anypoint Studio documentation].
 
 == Overview
 
